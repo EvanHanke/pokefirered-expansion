@@ -1,3 +1,15 @@
+PalletTown_PlayersHouse_1F_Text_LeaveHome::
+    .string "MOM: Oh honey, I can't believe\nit's time to go.\p"
+    .string "Sabrina is waiting outside\nfor you.\p"
+    .string "Here, take this present before\nyou leave.\p"
+    .string "They're new shoes for your\njourney.\p"
+    .string "And this is a map, so you\ndon't get lost\p."
+    .string "Come running home if\nanything happens.\p"
+    .string "...be careful out there, ok?$"
+
+PalletTown_PlayersHouse_1F_Text_ReceivedShoes::
+    .string "Received RUNNING SHOES and MAP\nfrom Mom.$"
+
 PalletTown_PlayersHouse_1F_Text_AllBoysLeaveOakLookingForYou::
     .string "MOM: …Right.\n"
     .string "All boys leave home someday.\l"

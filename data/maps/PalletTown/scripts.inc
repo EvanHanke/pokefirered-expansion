@@ -10,9 +10,44 @@ PalletTown_MapScripts::
 
 PalletTown_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
-	call_if_set FLAG_PALLET_LADY_NOT_BLOCKING_SIGN, PalletTown_EventScript_TryReadySignLady
-	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0, PalletTown_EventScript_SetSignLadyPos
-	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1, PalletTown_EventScript_SetSignLadyDone
+	end
+
+PalletTown_EventScript_Starter1::
+	lock
+	faceplayer
+	setvar PLAYER_STARTER_NUM, 0
+	setvar PLAYER_STARTER_SPECIES, SPECIES_CHIKORITA
+	setvar RIVAL_STARTER_SPECIES, SPECIES_TOTODILE
+	goto PalletTown_EventScript_ConfirmStarterChoice
+	release
+	end
+
+PalletTown_EventScript_Starter2::
+	lock
+	faceplayer
+	setvar PLAYER_STARTER_NUM, 0
+	setvar PLAYER_STARTER_SPECIES, SPECIES_CYNDAQUIL
+	setvar RIVAL_STARTER_SPECIES, SPECIES_TOTODILE
+	goto PalletTown_EventScript_ConfirmStarterChoice
+	release
+	end
+
+PalletTown_EventScript_Starter3::
+	lock
+	faceplayer
+	setvar PLAYER_STARTER_NUM, 0
+	setvar PLAYER_STARTER_SPECIES, SPECIES_TOTODILE
+	setvar RIVAL_STARTER_SPECIES, SPECIES_TOTODILE
+	goto PalletTown_EventScript_ConfirmStarterChoice
+	release
+	end
+
+PalletTown_EventScript_ConfirmStarterChoice::
+	showmonpic PLAYER_STARTER_SPECIES, 10, 3
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_Start1
+	hidemonpic
+	release
 	end
 
 PalletTown_EventScript_TryReadySignLady::

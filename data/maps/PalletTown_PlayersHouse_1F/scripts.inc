@@ -3,6 +3,25 @@
 PalletTown_PlayersHouse_1F_MapScripts::
 	.byte 0
 
+PalletTown_PlayersHouse_1F_EventScript_MomBye::
+	lock
+	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_MomWalk
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_PlayersHouse_1F_Text_LeaveHome
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	message PalletTown_PlayersHouse_1F_Text_ReceivedShoes
+	waitmessage
+	releaseall
+	return
+
+PalletTown_PlayersHouse_1F_Movement_MomWalk::
+	walk_in_place_up
+	walk_up
+	walk_up
+	walk_right
+	step_end
+
 PalletTown_PlayersHouse_1F_EventScript_Mom::
 	lock
 	faceplayer
@@ -54,3 +73,4 @@ PalletTown_PlayersHouse_1F_EventScript_TVScreenMale::
 PalletTown_PlayersHouse_1F_EventScript_TVScreenFemale::
 	msgbox PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad
 	return
+

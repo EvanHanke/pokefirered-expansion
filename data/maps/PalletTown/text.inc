@@ -1,3 +1,6 @@
+PalletTown_Text_Start1:
+    .string "Starter 1.$"
+
 PalletTown_Text_OakDontGoOut::
     .string "OAK: Hey! Wait!\n"
     .string "Don't go out!$"

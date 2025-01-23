@@ -1279,7 +1279,7 @@ static void Task_OakSpeech_FadeOutOak(u8 taskId)
         ClearDialogWindowAndFrame(WIN_INTRO_TEXTBOX, 1);
         CreateFadeInTask(taskId, 2);
         tTimer = 48;
-        gTasks[taskId].func = Task_OakSpeech_AskPlayerGender;
+        gTasks[taskId].func = Task_OakSpeech_YourNameWhatIsIt;
     }
 }
 
@@ -1518,7 +1518,7 @@ static void Task_OakSpeech_HandleConfirmNameInput(u8 taskId)
         {
             ClearDialogWindowAndFrame(WIN_INTRO_TEXTBOX, TRUE);
             CreateFadeInTask(taskId, 2);
-            gTasks[taskId].func = Task_OakSpeech_FadeOutPlayerPic;
+            gTasks[taskId].func = Task_OakSpeech_ReshowPlayersPic;
         }
         else
         {
@@ -1569,7 +1569,7 @@ static void Task_OakSpeech_FadeInRivalPic(u8 taskId)
     gSpriteCoordOffsetX = 0;
     LoadTrainerPic(RIVAL_PIC, 0);
     CreateFadeOutTask(taskId, 2);
-    gTasks[taskId].func = Task_OakSpeech_AskRivalsName;
+    gTasks[taskId].func = Task_OakSpeech_ReshowPlayersPic;
 }
 
 static void Task_OakSpeech_AskRivalsName(u8 taskId)

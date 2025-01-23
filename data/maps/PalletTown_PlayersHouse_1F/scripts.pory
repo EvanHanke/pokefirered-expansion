@@ -1,16 +1,41 @@
 mapscripts PalletTown_PlayersHouse_1F_MapScripts {
-	MAP_SCRIPT_MOM_BYE: Mom_Bye
+	MAP_SCRIPT_ON_FRAME_TABLE[
+		VAR_MOM, 0: Mom_Bye
+	]
 }
 
 script Mom_Bye{
-    if (flag(FLAG_HIDE_SAPPHIRE)) == false){
-		lock
-		msgbox("It's time to go.")
-		release
-
-		//goto(PalletTown_PlayersHouse_1F_EventScript_Mom)
-		//setflag(FLAG_MOM)
-	}
+	lock
+	setvar(VAR_MOM, 1)
+	applymovement(1, moves(
+		walk_in_place_up
+		walk_up
+		walk_up
+		walk_right
+	))
+	waitmovement(1)
+	textcolor(NPC_TEXT_COLOR_FEMALE)
+	msgbox(
+	"MOM: Oh, I can't believe it's
+	\nalready time to go!
+	\pGreen is waiting outside-
+	\nBut please take this present first.
+	\pI bought you some new shoes
+	\nand a map, so if you get lost
+	\pyou can just run home, okay?", MSGBOX_NPC)
+	textcolor(NPC_TEXT_COLOR_NEUTRAL)
+	giveitem(ITEM_TOWN_MAP)
+	setflag(FLAG_SYS_B_DASH)
+	msgbox(
+		"Received Running Shoes and\n Town Map!"
+	)
+	playfanfare(MUS_OBTAIN_KEY_ITEM)
+	applymovement(1, moves(
+		walk_down * 2
+		walk_left
+	))
+	release
+	end
 }
 
 

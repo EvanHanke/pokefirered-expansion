@@ -1,13 +1,93 @@
+mapscripts PalletTown_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE[
+		VAR_MOM, 1: PalletTown_Green
+	]
+	MAP_SCRIPT_ON_TRANSITION: PalletTown_Init
+}
+
+script PalletTown_Init{
+	setflag(FLAG_TEMP_1)
+}
+
+script PalletTown_Green{
+	lock
+	setvar(VAR_MOM, 2)
+	applymovement(4, moves(
+		walk_up
+	))
+	waitmovement(4)
+	msgbox("Green: Hey {PLAYER}!
+	\nare you ready to go?
+	\pI have the pokemon my brother
+	\ngave me.
+	\pCome on, I'll show you.", MSGBOX_NPC)
+	waitmessage()
+	applymovement(4, moves(
+		walk_down
+		walk_left * 3
+		walk_down * 4
+		walk_right * 4
+		walk_in_place_down
+	))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_down
+		walk_left * 3
+		walk_down * 5
+		walk_right * 3
+	))
+	waitmovement(4)
+	msgbox("Green: I have three pokemon,
+	\nso we can each pick one. 
+	\pYou can go first.", MSGBOX_NPC)
+	applymovement(4, moves(
+		walk_down
+	))
+	waitmovement(4)
+	addobject(1)
+	addobject(2)
+	addobject(3)
+	applymovement(4, moves(
+		walk_up
+		face_down
+	))
+	setobjectxyperm(4, 7, 14)
+	release
+	end
+}
+
+script starter1{
+	lock
+	setvar(PLAYER_STARTER_SPECIES, SPECIES_CYNDAQUIL)
+	showmonpic(PLAYER_STARTER_SPECIES, 10, 3)
+	msgbox("starter")
+	release
+	hidemonpic()
+	end
+}
+script starter2{
+	lock
+	setvar(PLAYER_STARTER_SPECIES, SPECIES_TOTODILE)
+	showmonpic(PLAYER_STARTER_SPECIES, 10, 3)
+	msgbox("starter")
+	release
+	hidemonpic()
+	end
+}
+script starter3{
+	lock
+	setvar(PLAYER_STARTER_SPECIES, SPECIES_CHIKORITA)
+	showmonpic(PLAYER_STARTER_SPECIES, 10, 3)
+	msgbox("starter")
+	release
+	hidemonpic()
+	end
+}
+
 raw `
 .equ LOCALID_SIGN_LADY, 1
 .equ LOCALID_PROF_OAK,  3
 
 .equ SIGN_LADY_READY, VAR_TEMP_2
-
-PalletTown_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PalletTown_OnFrame
-	.byte 0
 
 PalletTown_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
